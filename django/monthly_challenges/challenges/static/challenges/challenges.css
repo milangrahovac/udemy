@@ -1,0 +1,40 @@
+ul {
+    color: antiquewhite;
+    list-style: none;
+    width: 90%;
+    max-width: 20rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 1rem;
+    border-radius: 12px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 28.6rem;
+    background-color: #eeeeee;
+}
+
+li {
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+}
+
+li:nth-of-type(6),
+li:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0rem;
+}
+
+
+li a {
+    text-decoration: none;
+    color: #383838;
+}
+
+li a:hover,
+li a:active {
+    color:  #cf54a6;
+}
