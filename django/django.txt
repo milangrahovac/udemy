@@ -1,0 +1,8 @@
+start django project
+django-admin startproject mypage
+
+start django app
+python3 manage.py startapp challenges
+ 
+run server
+python3 manage.py runserver
