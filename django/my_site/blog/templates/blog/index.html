@@ -13,7 +13,7 @@
 
 <section id="welcome">
     <header>
-        <img src="{% static "blog/images/mountans.png" %}" alt="Milan - The author of this blog."/>
+        <img src="{% static "blog/images/milan.png" %}" alt="Milan - The author of this blog."/>
         <h2>Milan's blog!</h2>
     </header>
     <p>Hi I'm Milan and I love to blog about tech and the world.</p>
@@ -22,7 +22,9 @@
 <section id="latest-posts">
     <h2>My latest Thoughts</h2>
     <ul>
-        {% include "blog/includes/post.html" %}
+        {% for post in posts %}
+            {% include "blog/includes/post.html" %}
+        {% endfor %}
     </ul>
 </section>
 
