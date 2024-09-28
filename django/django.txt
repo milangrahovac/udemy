@@ -6,3 +6,26 @@ python3 manage.py startapp challenges
  
 run server
 python3 manage.py runserver
+
+make migrations - pravi migration fajl
+python3 manage.py makemigrations
+
+kreira db bazu
+python3 manage.py migrate
+
+pristup shell-u
+python3 manage.py shell
+
+ucitavanje db Book
+from book_outlet.models import Book
+
+kreiranje  
+harry_potter = Book(title="Harry Potter 1", author="J. R. R. Tolkien")
+
+dodavanje u bazu
+harry_potter.save()
+
+update
+ucitavanje podatkao koji zelimo da izmenimo
+harry_potter = Book.objects.all()[0]
+harry_potter.author = "J. K. Rowling"
