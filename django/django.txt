@@ -25,7 +25,28 @@ harry_potter = Book(title="Harry Potter 1", author="J. R. R. Tolkien")
 dodavanje u bazu
 harry_potter.save()
 
+or
+Book.objects.create(title="Harry Potter 2", rating=5, author="J. K. Rowling", is_bestselling=True)
+Book.objects.create(title="Some random book", rating=3, author="G. Wolf", is_bestselling=False)
+
 update
 ucitavanje podatkao koji zelimo da izmenimo
 harry_potter = Book.objects.all()[0]
 harry_potter.author = "J. K. Rowling"
+harry_potter.save() ?
+
+
+delete
+harry_potter.delete()
+
+get db
+Book.objects.all()
+Book.objects.all()[1]
+
+get - return unique data
+Book.objects.get(title="some book")
+
+filter - return mulitple data
+Book.objects.filter(title="some book")
+Book.objects.filter(rating__lte=4)  #lte - lower then equal
+Book.objects.filter(rating__lte=4, title__contains="story")
