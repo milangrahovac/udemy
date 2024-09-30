@@ -48,5 +48,13 @@ Book.objects.get(title="some book")
 
 filter - return mulitple data
 Book.objects.filter(title="some book")
-Book.objects.filter(rating__lte=4)  #lte - lower then equal
+Book.objects.filter(rating__lt=4)  #lte - lower then equal
 Book.objects.filter(rating__lte=4, title__contains="story")
+
+from django.db.models import Q - (| - or)
+Book.objects.filter(Q(rating__lt=4) | Q(is_bestselling=True))
+Book.objects.filter(Q(rating__lt=4) | Q(is_bestselling=True), Q(author="J. K. Rowling"))
+Book.objects.filter(Q(rating__lt=4) | Q(is_bestselling=True, author="J. K. Rowling"))
+
+bestsellers = Book.objects.filter(is_bestselling=True)
+amazing_bestsellers = bestsellers.filter(rating__gt=4)
