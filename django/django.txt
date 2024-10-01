@@ -58,3 +58,6 @@ Book.objects.filter(Q(rating__lt=4) | Q(is_bestselling=True, author="J. K. Rowli
 
 bestsellers = Book.objects.filter(is_bestselling=True)
 amazing_bestsellers = bestsellers.filter(rating__gt=4)
+
+print(bestsellers)
+print(amazing_bestsellers)

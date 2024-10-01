@@ -1,0 +1,4 @@
+venv/
+Makefile
+stop_server.sh
+README.md
