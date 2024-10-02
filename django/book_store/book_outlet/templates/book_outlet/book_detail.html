@@ -6,9 +6,16 @@
 
 {% block content %}
 
+    <header>
+        <nav>
+            <a href="{% url "index" %}">Home</a>
+        </nav>
+    </header>
+
     <h1>{{ title }}</h1>
     <h2>{{ author }}</h2>
-    <p>The book has a ratinig of: {{ ratinig }}
+
+    <p>The book has a ratinig of: {{ rating }}
         {% if is_bestselling %}
             and is a best seller.
         {% else %}
