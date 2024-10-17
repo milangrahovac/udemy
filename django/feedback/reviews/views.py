@@ -22,17 +22,20 @@ from .models import Review
 
 def review(request):
     if request.method == "POST":
+        # existing_model = Review.objects.get(pk=1)
+        # form = ReviewForm(request.POST, instance=existing_model)
+
         form = ReviewForm(request.POST)
 
         if form.is_valid():
             print(form.cleaned_data)
-            review = Review(
-                user_name=form.cleaned_data["user_name"],
-                review_text=form.cleaned_data["review_text"],
-                rating=form.cleaned_data["rating"]
-            )
+            # Not need if using ".ModelForm"
+            # review = Review(
+            #     user_name=form.cleaned_data["user_name"],
+            #     review_text=form.cleaned_data["review_text"],
+            #     rating=form.cleaned_data["rating"]
+            # )
             review.save()
-
             return HttpResponseRedirect("/thank-you")
     else:
         form = ReviewForm()
