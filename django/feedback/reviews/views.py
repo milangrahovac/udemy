@@ -1,8 +1,13 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import ReviewForm
 from .models import Review
 from django.views import View
+from django.views.generic.base import TemplateView
+from django.views.generic import ListView, DetailView
+
 # Create your views here.
 
 
@@ -45,6 +50,8 @@ from django.views import View
 #         "form": form
 #     })
 
+# def thank_you(request):
+#     return render(request, "reviews/thank_you.html")
 
 class ReviewView(View):
     def get(self, request):
@@ -65,5 +72,47 @@ class ReviewView(View):
         })
 
 
-def thank_you(request):
-    return render(request, "reviews/thank_you.html")
+class ThankYouView(TemplateView):
+    template_name = "reviews/thank_you.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["message"] = "This works!"
+        return context
+
+
+# class ReviewsList(TemplateView):
+#     template_name = "reviews/review_list.html"
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         reviews = Review.objects.all()
+#         context["reviews"] = reviews
+#         return context
+
+
+# class SingleReviewView(TemplateView):
+#     template_name = "reviews/single_review.html"
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         review_id = kwargs["id"]
+#         selected_review = Review.objects.get(pk=review_id)
+#         context["review"] = selected_review
+#         return context
+
+class ReviewsList(ListView):
+    template_name = "reviews/review_list.html"
+    model = Review
+    context_object_name = "reviews"  # default object_list
+
+    # def get_queryset(self) -> QuerySet[Any]:
+    #     base_query = super().get_queryset()
+    #     data = base_query.filter(rating__gt=4)
+    #     return data
+
+
+class SingleReviewView(DetailView):
+    template_name = "reviews/single_review.html"
+    model = Review
+    context_object_name = "review"  # default object

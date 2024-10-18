@@ -1,0 +1,15 @@
+Create requirements.txt
+pip3 freeze > requirements.txt
+
+Install requirements
+pip3 install -r requirements.txt
+
+create enviroment
+python3 -m venv venv
+source env/bin/activate
+deactivate
+
+docker-compose build
+docker-compose up
+docker-compose down
+
