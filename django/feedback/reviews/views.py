@@ -7,7 +7,7 @@ from .models import Review
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView
-
+from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 # Create your views here.
 
 
@@ -53,23 +53,42 @@ from django.views.generic import ListView, DetailView
 # def thank_you(request):
 #     return render(request, "reviews/thank_you.html")
 
-class ReviewView(View):
-    def get(self, request):
-        form = ReviewForm()
-        return render(request, "reviews/review.html", {
-            "form": form
-        })
+# class ReviewView(View):
+#     def get(self, request):
+#         form = ReviewForm()
+#         return render(request, "reviews/review.html", {
+#             "form": form
+#         })
 
-    def post(self, request):
-        form = ReviewForm(request.POST)
+#     def post(self, request):
+#         form = ReviewForm(request.POST)
 
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect("/thank-you")
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect("/thank-you")
 
-        return render(request, "reviews/review.html", {
-            "form": form
-        })
+#         return render(request, "reviews/review.html", {
+#             "form": form
+#         })
+
+
+# class ReviewView(FormView):
+#     form_class = ReviewForm
+#     template_name = "reviews/review.html"
+#     success_url = "thank-you"
+
+# # save from if valid
+#     def form_valid(self, form):
+#         form.save()
+#         return super().form_valid(form)
+
+
+class ReviewView(CreateView):
+    model = Review
+    form_class = ReviewForm
+    template_name = "reviews/review.html"
+    success_url = "thank-you"
+    # fields = "__all__"
 
 
 class ThankYouView(TemplateView):
