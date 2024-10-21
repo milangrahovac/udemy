@@ -6,3 +6,16 @@ venv/
 env/
 __pycache__/
 .env
+migrations/
+
+# exclude everything
+django/feedback/temp/*
+
+# exception to the rule
+!django/feedback/temp/.gitkeep
+
+# exclude everything
+django/feedback/uploads/images/*
+
+# exception to the rule
+!django/feedback/uploads/images/.gitkeep
