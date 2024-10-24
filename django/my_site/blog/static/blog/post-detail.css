@@ -21,8 +21,8 @@ body {
 
 #summary h2 {
   color: white;
-  font-size: 4.2rem;
-  margin-bottom: 0.8rem;
+  font-size: 3.2rem;
+  margin-bottom: 1.8rem;
 }
 
 #summary article {
@@ -184,6 +184,8 @@ main {
   background-color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   padding: 1rem 2rem;
+  color: #464646;
+
 }
 
 #comments ul {
@@ -193,7 +195,7 @@ main {
 }
 
 #comments li {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   border-bottom: 2px solid #ccc;
 }
 
@@ -201,6 +203,19 @@ main {
   border-bottom: none;
 }
 
-#comments h2 {
+#comments h4 {
+  font-size: 1.1em;
   color: #464646;
+  font-weight: 600;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#comments p {
+  font-size: 0.9em;
+  color: #464648;
+  margin-top: 0px;
+  margin-bottom: 10px;
+
 }
