@@ -7,12 +7,7 @@ env/
 __pycache__/
 migrations/
 .ebextensions/
-/django/my_site/staticfiles/
-django/my_site/staticfiles
-/django/my_site/staticfiles
 django/my_site/staticfiles/
-django/
-baza/
 
 # exclude everything
 django/feedback/temp/*
