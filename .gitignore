@@ -5,8 +5,10 @@ venv/
 .env/
 env/
 __pycache__/
-.env
 migrations/
+.ebextensions/
+django/my_site/staticfiles/
+
 
 # exclude everything
 django/feedback/temp/*
