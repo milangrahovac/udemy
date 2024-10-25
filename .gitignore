@@ -9,7 +9,6 @@ migrations/
 .ebextensions/
 django/my_site/staticfiles/
 
-
 # exclude everything
 django/feedback/temp/*
 
