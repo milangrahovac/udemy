@@ -1,84 +1,37 @@
+{% extends "meetups/base/base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}All Meetups{% endblock title %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Meetups</title>
-    <link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}">
+{% block site_css %}
     <link rel="stylesheet" href="{% static 'meetups/styles/all-meetups.css' %}">
-</head>
+{% endblock site_css %}
+
+{% block main_heading %}
+We got great mettups coming up!
+{% endblock main_heading %}
+
+{% block header_content %}
+    <p>Find the one that best suits your needs!</p>
+{% endblock header_content %}
 
 
-<body>
-    <header id="main-header">
-        <nav>
-            <a href="/" id="main-logo">Django Meetups</a>
-        </nav>
-        <h1>We got great mettups coming up!</h1>
-        <p>Find the one that best suits your needs!</p>
+{% block body %}
 
-    </header>
+    <section>
 
+        <h2>Upcoming Meetups</h2>
 
-    <main>
+        <ol>
+            {% for meetup_item in meetups %}
 
-        <section>
-
-            <h2>Upcoming Meetups</h2>
-
-            <ol>
-                {% for meetup_item in meetups %}
-                <li class="meetup-item">
-                    <article>
-
-                        <div class="meetup-summary">
-
-                            <div class="meetup-image">
-                                <img src="" alt="">
-                            </div>
-
-                            <div class="meetup-details">
-                                <h3>{{ meetup_item.title }}</h3>
-                                <address>{{ meetup_item.location }}</address>
-                            </div>
-
-                        </div>
-
-                        <div class="meetup-actions">
-                            <a href=" {% url 'meetup-details' meetup_item.slug %}" class="btn">More details</a>
-                        </div>
-
-                    </article>
-                </li>
-                {% endfor %}
-            </ol>
-
-        </section>
-
-    </main>
-
-    <!-- <h1>All Meetups!</h1>
-    <p>Hello World</p>
-
-    <h2>{{ meetups.0.title }}</h2>
-    <h2>Meetups:</h2>
-
-    {% if show_meetups %}
-    <ul>
-        {% for meetup in meetups %}
-        <li>{{ meetup.title }}</li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No meetups found!</p>
-    {% endif %} -->
+            {% comment %} {% include "meetups/includes/meetup-item.html" %} {% endcomment %}
+            {% include "meetups/includes/meetup-item.html" with title=meetup_item.title location=meetup_item.location  %}
 
 
+            {% endfor %}
+        </ol>
 
+    </section>
 
-</body>
-
-</html>
+{% endblock body %}
