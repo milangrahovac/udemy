@@ -26,9 +26,8 @@ We got great mettups coming up!
             {% for meetup_item in meetups %}
 
             {% comment %} {% include "meetups/includes/meetup-item.html" %} {% endcomment %}
-            {% include "meetups/includes/meetup-item.html" with title=meetup_item.title location=meetup_item.location  %}
-
-
+            {% include "meetups/includes/meetup-item.html" with title=meetup_item.title location=meetup_item.location slug=meetup_item.slug image=meetup_item.image.url%}
+\
             {% endfor %}
         </ol>
 

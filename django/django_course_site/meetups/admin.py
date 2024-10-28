@@ -1,15 +1,18 @@
 from django.contrib import admin
-from .models import Meetups
+from .models import Meetup, Location
 
 # Register your models here.
 
 
-class PostMeetups(admin.ModelAdmin):
+class LocationAdmin(admin.ModelAdmin):
+    list_display = ("name", "address", )
+
+
+class MeetupAdmin(admin.ModelAdmin):
     list_display = ("title", "slug", )
-    list_filter = ("title", )
-    prepopulated_fileds = {"slug": ("title",)}
-    # verbose_name = 'Meetups'
+    list_filter = ("location", )
+    prepopulated_fields = {"slug": ("title", )}
 
 
-admin.site.register(Meetups, PostMeetups)
-# admin.site.register(Meetups)
+admin.site.register(Location, LocationAdmin)
+admin.site.register(Meetup, MeetupAdmin)
