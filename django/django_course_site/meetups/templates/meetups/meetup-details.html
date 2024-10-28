@@ -1,0 +1,51 @@
+{% extends "meetups/base/base.html" %}
+{% load static %}
+
+{% block title %}{{ meetup_title }}{% endblock title %}
+
+{% block site_css %}
+<link rel="stylesheet" href="{% static 'meetups/styles/meetup-details.css' %}">
+{% endblock site_css %}
+
+{% block main_heading %}{{ meetup_title }}{% endblock main_heading %}
+
+{% comment %} {% block header_content %}
+<address>This meetup takes place in <span>Location:</span>(ADDRESS).</address>
+{% endblock header_content %} {% endcomment %}
+
+
+
+{% block body %}
+
+
+    {% if meetup_found %}
+        <article>
+            <img src="" alt="">
+
+            <section id="location">
+                <h2>Meetup location</h2>
+                <address>This meetup takes place in <span>Location:</span>(ADDRESS).</address>
+            </section>
+
+            <section id="details">
+                <h2>What's this meetup about?</h2>
+                <p>{{meetup_description }}</p>
+
+                <footer>
+                    <p>Need more details? Please <a href="">contact the organizer.</a></p>
+                </footer>
+            </section>
+
+            <section id="registration">
+                <h2>Join Us!</h2>
+                <form action=""></form>
+            </section>
+
+        </article>
+    {% else %}
+        <p>No meetup found for this slug, sorry.</p>
+    {% endif %}
+
+
+
+{% endblock body %}
