@@ -14,8 +14,8 @@ class ParticipantAdmin(admin.ModelAdmin):
 
 
 class MeetupAdmin(admin.ModelAdmin):
-    list_display = ("title", "slug", )
-    list_filter = ("location", )
+    list_display = ("title", "date", "organizer_email", )
+    list_filter = ("location", "date", "organizer_email", )
     prepopulated_fields = {"slug": ("title", )}
 
 

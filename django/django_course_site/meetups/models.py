@@ -33,13 +33,15 @@ class Participant(models.Model):
 
 class Meetup(models.Model):
     title = models.CharField(max_length=200)
+    organizer_email = models.EmailField()
+    date = models.DateField()
     slug = models.SlugField(unique=True)
     description = models.TextField(max_length=800)
     image = models.ImageField(upload_to="images")
     # location - one to many relatition
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     # participant - many to many relatition
-    participant = models.ManyToManyField(Participant, blank=True, null=True)
+    participants = models.ManyToManyField(Participant, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Meetups"
