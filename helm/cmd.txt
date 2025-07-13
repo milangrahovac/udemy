@@ -53,5 +53,8 @@ helm upgrade local-wp bitnami/wordpress \
 --debug \
 --timeout=2m
 
-
+helm install local-wp
 helm uninstall local-wp
+
+helm template nginx
+helm lint nginx
