@@ -27,3 +27,31 @@ kubectl expose deploy local-wp-wordpress --name local-wp-np --type NodePort
 helm uninstall local-wp
 
 helm upgrade --reuse-values custom-values.yaml local-wp bitnami/wordpress --version 23.1.20
+
+# shows user custom values
+helm get values local-wp
+
+helm history local-wp
+helm get values local-wp --revision 1
+
+to change version:
+helm repo update
+helm search repo bitnami/wordpress --versions
+helm upgrade local-wp bitnami/wordpress --version 23.1.28 --reuse-values --values custom-values.yaml
+
+helm upgrade local-wp bitnami/wordpress --version 23.1.28 --reuse-values --values custom-values.yaml --set "images.tag=nonexistent"
+
+helm rollback local-wp 1
+
+rollback change in case of fail
+helm upgrade local-wp bitnami/wordpress \
+--version 23.1.28 \
+--reuse-values \
+--values custom-values.yaml \
+--atomic \
+--cleanup-on-fail \
+--debug \
+--timeout=2m
+
+
+helm uninstall local-wp
