@@ -1,0 +1,4 @@
+# wordpressUsername: tester
+# wordpressPassword: 2passtae5
+# existingSecret: local-wp-credentials
+replicaCount: 3
