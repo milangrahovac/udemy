@@ -1,0 +1,8 @@
+test: I am a string
+
+title: Hello World
+
+environment: production
+
+labels:
+  app: nginx

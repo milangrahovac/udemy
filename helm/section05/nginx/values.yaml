@@ -1,0 +1,17 @@
+# replicaCount, number of Nginx replicas to deploy
+replicaCount: 1
+
+# Settings for Nginx image
+image:
+  name: nginx
+  tag: "1.27.0"
+
+# Nginx container ports
+containerPorts:
+  http: 80
+
+# Settings for Nginx service
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
