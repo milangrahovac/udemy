@@ -12,6 +12,7 @@ containerPorts:
 
 # Settings for Nginx service
 service:
+  enabled: true
   type: ClusterIP
   port: 80
   targetPort: 80

@@ -1,14 +1,20 @@
+{{- if .Values.service.enabled }}
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-svc
+  name: {{ .Release.Name }}-{{ .Chart.Name }}-svc
   labels:
-    app: nginx
+    app: {{ .Chart.Name }}
+    release: {{ .Release.Name }}
 spec:
   type: {{ .Values.service.type }}
-  selector:
-    app: nginx
+  selector:  
+    app: {{ .Chart.Name }}
+    release: {{ .Release.Name }}
   ports:
     - protocol: TCP
       port: {{ .Values.service.port }}
       targetPort: {{ .Values.containerPorts.http }}
+
+{{ end }}

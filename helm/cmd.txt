@@ -58,3 +58,18 @@ helm uninstall local-wp
 
 helm template nginx
 helm lint nginx
+helm package nginx
+helm install local-nginx nginx-0.1.0.tgz
+
+to create index file
+helm repo index .
+
+
+add your repo
+helm repo add my-repo https:myrepo.github.io/helm-charts/
+helm repo lis
+helm search repo nginx
+helm install local-nginx myrepo/nginx
+
+create your own helm
+helm create backend-app
