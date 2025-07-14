@@ -58,3 +58,5 @@ helm uninstall local-wp
 
 helm template nginx
 helm lint nginx
+helm package nginx
+helm install local-nginx nginx-0.1.0.tgz
