@@ -1,0 +1,45 @@
+## @param Customname allows to set a custom resource name for the K8s resource in the Chart
+## Default {{ .Release.Name }}-{{ .Chart.Name }}
+customName: ""
+
+environment: production
+
+labels:
+  app: nginx
+
+## replicaCount, number of Nginx replicas to deploy
+replicaCount: 1
+
+## Settings for Nginx image
+image:
+  name: nginx
+  tag: "1.27.0"
+
+## Nginx container ports
+containerPorts:
+  http: 80
+
+## Settings for Nginx service
+## service:
+##  enabled: true
+##  type: ClusterIP
+##  port: 80
+##  targetPort: 80
+##
+## @param services[*].type The type of service ......
+
+# services:
+#   - type: ClusterIP
+#     port: 80
+#   - type: NodePort
+#     port: 30007
+
+services:
+  svc1:
+    type: ClusterIP
+    port: 80
+  svc2:
+    type: NodePort
+    port: 30007
+
+title: nginx-test

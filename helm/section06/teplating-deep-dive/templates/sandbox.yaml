@@ -1,0 +1,67 @@
+# I am a YAML comment
+{{/* I am a GO comment, and I will NOT remain. */}}
+
+{{- /* I am a GO comment, and I will NOT remain. */ -}}
+
+test: {{ .Values.test }}
+
+# lower "Hello World" to "hello world" 
+title: {{ lower .Values.title }}
+
+# replace "Hello World" to "Hello-World" 
+newtitle1: {{ replace " " "-" .Values.title }} 
+
+# lower replace  "Hello World" to "hello-world" 
+newtitle2: {{ lower (replace " " "-" .Values.title) }}
+
+#  replace | lower  "Hello World" to "hello-world" 
+newtitle3: {{ replace " " "-" .Values.title | lower }}
+
+#  replace | lower  "Hello World" to "hello-world" 
+newtitle4: {{ lower .Values.title | replace " " "-" }}
+
+labels:
+    {{/* The app label comes from the Release. */}}
+    app: {{ .Values.labels.app }}
+    {{/* The chart label comes from the Chart information. */}}
+    chart: {{ .Chart.Name }}
+    #{{- /* <function name> <arg1> <arg2> */ -}}
+
+
+    {{ if eq .Values.environment "production" }}
+    environment: production
+    build: stable
+    public-ingress: true
+    {{ else if eq .Values.environment "staging" }}
+    environment: staging
+    build: stag
+    public-ingress: false
+    {{ else }}
+    environment: dev
+    build: alpha
+    public-ingress: false
+    {{ end }}
+
+list1: {{ list 1 2 3 }}
+
+list2: 
+{{ list 1 2 3 | toYaml }}
+
+list3: 
+{{ toYaml (list 1 2 3) }}
+
+list4: 
+{{ toYaml (list 1 2 3) | nindent 2 }}
+
+list5: 
+{{ list 1 2 3 | toYaml | nindent 2 }}
+
+list6:
+    val:
+        example: {{ list 1 2 3 | toYaml | nindent 12 }}
+
+
+# my-dict: {{ dict }}
+
+my-dict: {{ dict "simple" "mystring" "complex" (dict "value" "key") | toYaml | nindent 2 }}
+
