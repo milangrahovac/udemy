@@ -1,0 +1,4 @@
+apiVersion: v2
+name: templating-deep-dive
+version: 0.1.1
+appVersion: 0.1.0
