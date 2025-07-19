@@ -19,6 +19,14 @@ image:
 containerPorts:
   http: 80
 
+
+
+securityContext:
+  enabled: true
+  runAsUser: 1000
+  fsGroup: 2000
+
+
 ## Settings for Nginx service
 ## service:
 ##  enabled: true
