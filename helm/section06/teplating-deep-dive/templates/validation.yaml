@@ -1,0 +1,11 @@
+{{- if and .Values.securityContext .Values.securityContext.enabled -}}
+{{- $errMsgRunAsUser := "securityContext.runAsUser is required when setting securityContext and enabled is true." -}}
+{{- $runAsUser := required $errMsgRunAsUser .Values.securityContext.runAsUser -}}
+{{- $errMsgFsGroup := "securityContext.fsGroup is required when setting securityContext and enabled is true." -}}
+{{- $fsGroup := required $errMsgFsGroup .Values.securityContext.fsGroup -}}
+
+{{- if eq (int .Values.securityContext.runAsUser) 0 -}}
+{{- fail "\n\nInvalid value for: securityContext.runAsUser \nContainers cannot be run as root users. \nPlease provide a UID greater then 0" -}}
+{{- end -}}
+
+{{- end -}}
