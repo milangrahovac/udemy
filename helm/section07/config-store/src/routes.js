@@ -13,7 +13,7 @@ apiRouter.get("/kv", async (req, res) => {
     }
 });
 
-apiRouter.get("/kv:key", async (req, res) => {
+apiRouter.get("/kv/:key", async (req, res) => {
     const { key } = req.params;
 
     try {
@@ -40,7 +40,7 @@ apiRouter.post("/kv", async (req, res) => {
         if (existingKv) {
             return res.status(400).json({ error: "Key already present in DB." });
         } else {
-            const NewKv = await KV.create({ key: value });
+            const NewKv = await KV.create({ key, value });
             return res.status(201).json({ data: NewKv });
         }
     } catch (err) {
@@ -48,7 +48,7 @@ apiRouter.post("/kv", async (req, res) => {
     }
 });
 
-apiRouter.put("/kv:key", async (req, res) => {
+apiRouter.put("/kv/:key", async (req, res) => {
     const { key } = req.params;
     const { value } = req.body;
 
@@ -56,10 +56,10 @@ apiRouter.put("/kv:key", async (req, res) => {
         return res.status(400).json({ error: "Value field is reqired." });
     }
     try {
-        const [updatedCount] = await KV.update({ where: { key } });
+        const [updatedCount] = await KV.update({ value }, { where: { key } });
         if (updatedCount > 0) {
             const updatedKv = await KV.findOne({ where: { key } });
-            if (updatedKV) {
+            if (updatedKv) {
                 return res.json({ data: updatedKv });
             } else {
                 return res.status(404).json({ error: "Key not found." });
@@ -72,7 +72,7 @@ apiRouter.put("/kv:key", async (req, res) => {
     }
 });
 
-apiRouter.delete("/kv:key", async (req, res) => {
+apiRouter.delete("/kv/:key", async (req, res) => {
     const { key } = req.params;
 
     try {
