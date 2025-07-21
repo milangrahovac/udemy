@@ -8,5 +8,5 @@ stop: ## Stop the server on port 3000.
 	sh stop_server.sh
 
 .PHONY: build
-build: ## Stop the server on port 3000.
+build: stop ## Stop the server on port 3000.
 	docker compose up --build --watch
