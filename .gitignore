@@ -8,6 +8,8 @@ __pycache__/
 migrations/
 .ebextensions/
 django/my_site/staticfiles/
+.env
+node_modules/
 
 # exclude everything
 django/feedback/temp/*
