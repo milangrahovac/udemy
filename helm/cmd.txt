@@ -68,12 +68,20 @@ helm repo index .
 
 add your repo
 helm repo add my-repo https:myrepo.github.io/helm-charts/
-helm repo lis
+helm repo list
 helm search repo nginx
-helm install local-nginx myrepo/nginx
+helm install local-nginx myrepo/nginx custom.values.yaml
+helm get values local-nginx
+helm dependency update
+helm dependency build
 
 create your own helm
 helm create backend-app
+
+
+if version changed run
+helm dependency update
+helm dependency build
 
 
 npm init -y
