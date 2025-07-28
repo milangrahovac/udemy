@@ -128,3 +128,19 @@ demo-subchart:
 
 global:
   defaultStorageClass: "my-custom-storageclass"
+
+# postgresql:
+#   enabled: true
+
+tags:
+  database: true
+  performance: true
+
+postgres:
+  fullnameOverride: postgressql-db
+  auth:
+    username: config-store_user
+    database: config_store_db
+    existingSecret: postgres-creds
+    secretKeys:
+      userPasswordKey: password

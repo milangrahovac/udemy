@@ -40,6 +40,22 @@ spec:
           {{- end }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env: 
+            - name: PORT
+              value: "{{ .Values.service.port }}"
+            {{- with .Values.postgres.auth }}
+            - name: DB_USER
+              value: {{ .Values.postgres.auth.username }}
+            - name: DB_NAME
+              value: {{ .Values.postgres.auth.database }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgres.auth.existingSecret }}
+                  key: {{ .Values.postgres.auth.secretKeys.userPasswordKey }}
+            {{- end }}
+            - name: DB_URL
+              value: postgresql://$(DB_USER):$(DB_PASSWORD)@{{ .Values.postgres.fullnameOverride }}:5432/$(DB_NAME)
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

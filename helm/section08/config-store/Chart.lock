@@ -2,8 +2,5 @@ dependencies:
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami
   version: 16.7.21
-- name: demo-subchart
-  repository: ""
-  version: 0.1.0
-digest: sha256:020383c9c45316a4aa58a9f613934c1aeea2aafcc73846820ea3d4dda31c07a7
-generated: "2025-07-23T22:47:44.910412+02:00"
+digest: sha256:672a3ea341d339a169c4482355dcf244e9652c02d72a66706af318a981b8496c
+generated: "2025-07-26T17:57:51.295678+02:00"
