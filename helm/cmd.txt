@@ -41,6 +41,7 @@ helm upgrade local-wp bitnami/wordpress --version 23.1.28 --reuse-values --value
 
 helm upgrade local-wp bitnami/wordpress --version 23.1.28 --reuse-values --values custom-values.yaml --set "images.tag=nonexistent"
 
+helm history local-wp
 helm rollback local-wp 1
 
 rollback change in case of fail
@@ -88,3 +89,6 @@ npm init -y
 npm i --save-exact express@4.21.2 sequelize@6.37.5 pg@8.13.1 pg-hstore@2.3.4 body-parser@1.20.3 cors@2.8.5 
 npm install
 npm install --save-exact --save-dev nodemon@3.1.7
+
+
+kubectl create secret generic postgres-creds --from-env-file=.env
