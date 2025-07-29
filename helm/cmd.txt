@@ -92,3 +92,7 @@ npm install --save-exact --save-dev nodemon@3.1.7
 
 
 kubectl create secret generic postgres-creds --from-env-file=.env
+
+helm install demo-hooks .
+kubectl get job --watch
+helm upgrade demo-hooks .
