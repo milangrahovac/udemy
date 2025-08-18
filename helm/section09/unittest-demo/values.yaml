@@ -1,4 +1,4 @@
-# Default values for test-hook.
+# Default values for unittest-demo.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -127,12 +127,6 @@ tolerations: []
 affinity: {}
 
 tests:
-  enable: true
-  enabled: true
-  scripts:
-    volumeName: "tests"
-    volumeMonutPath: "/tests"
-    runFileName: "run.sh"
   hookDeletePolicies:
     - before-hook-creation
     - hook-succeeded
